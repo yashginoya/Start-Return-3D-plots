@@ -60,19 +60,23 @@ def make3DGraph(filePath, graphTitle):
 
     return fig
 
-if __name__ == "__main__":
-    
-    SYMBOL = st.selectbox("Select a Symbol ", ["NIFTY", "BANKNIFTY" , "FINNIFTY"], index=0)
+def main():
+
+    SYMBOL_LIST = []
     version_folder_list = []
+
+    for dirpath,dirnames,filenames in os.walk("HSL_TSL_Optimization/Output"):
+        for dirc in dirnames:
+            SYMBOL_LIST.append(dirc)
 
     for dirpath,dirnames,filenames in os.walk("HSL_TSL_Optimization/Output/" + SYMBOL):
         for dirc in dirnames:
             version_folder_list.append(dirc)
 
-    InnerFolderName = "1"
+    SYMBOL = st.selectbox("Select a Symbol ", SYMBOL_LIST, index=0)
+
     InnerFolderName = st.selectbox("Select a Version ", version_folder_list , index=0)
     
-    # folder_path = "D:\\yash\\Akash Strategy\\Pyramid Neutral Strategy\\Scripts\\HSL_TSL_Optimization\\Output\\" + SYMBOL + "\\" + InnerFolderName
     folder_path = "HSL_TSL_Optimization/Output/" + SYMBOL + "/" + InnerFolderName
     all_files = []
 
@@ -95,4 +99,6 @@ if __name__ == "__main__":
             curr_3d_graph = make3DGraph(file_path,graph_title)
             st.plotly_chart(curr_3d_graph)
 
-
+if __name__ == "__main__":
+    main()
+    
