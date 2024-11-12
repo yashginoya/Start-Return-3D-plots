@@ -69,11 +69,13 @@ def main():
         for dirc in dirnames:
             SYMBOL_LIST.append(dirc)
 
+    SYMBOL = st.selectbox("Select a Symbol ", SYMBOL_LIST, index=0)
+
     for dirpath,dirnames,filenames in os.walk("HSL_TSL_Optimization/Output/" + SYMBOL):
         for dirc in dirnames:
             version_folder_list.append(dirc)
 
-    SYMBOL = st.selectbox("Select a Symbol ", SYMBOL_LIST, index=0)
+    
 
     InnerFolderName = st.selectbox("Select a Version ", version_folder_list , index=0)
     
