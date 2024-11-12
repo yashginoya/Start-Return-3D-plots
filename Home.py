@@ -112,7 +112,7 @@ if __name__ == "__main__":
     SYMBOL = st.selectbox("Select a Symbol ", ["NIFTY", "BANKNIFTY"], index=0)
     version_folder_list = []
 
-    for dirpath,dirnames,filenames in os.walk("HSL_TSL_Optimization\\Output\\" + SYMBOL):
+    for dirpath,dirnames,filenames in os.walk("HSL_TSL_Optimization/Output/" + SYMBOL):
         for dirc in dirnames:
             version_folder_list.append(dirc)
 
@@ -120,7 +120,7 @@ if __name__ == "__main__":
     InnerFolderName = st.selectbox("Select a Version ", version_folder_list , index=0)
     
     # folder_path = "D:\\yash\\Akash Strategy\\Pyramid Neutral Strategy\\Scripts\\HSL_TSL_Optimization\\Output\\" + SYMBOL + "\\" + InnerFolderName
-    folder_path = ".\\HSL_TSL_Optimization\\Output\\" + SYMBOL + "\\" + InnerFolderName
+    folder_path = "./HSL_TSL_Optimization/Output/" + SYMBOL + "/" + InnerFolderName
     all_files = []
 
     for dirpath, dirnames, filenames in os.walk(folder_path):
@@ -136,7 +136,7 @@ if __name__ == "__main__":
         if "lock" in curr_file_name:
             continue
         if "TSL" in curr_file_name:
-            file_path =  folder_path + '\\' + curr_file_name
+            file_path =  folder_path + '/' + curr_file_name
             graph_title = curr_file_name
             curr_3d_graph = make3DGraph(file_path,graph_title)
             st.plotly_chart(curr_3d_graph)
