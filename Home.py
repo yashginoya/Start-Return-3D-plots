@@ -120,7 +120,7 @@ if __name__ == "__main__":
     InnerFolderName = st.selectbox("Select a Version ", version_folder_list , index=0)
     
     # folder_path = "D:\\yash\\Akash Strategy\\Pyramid Neutral Strategy\\Scripts\\HSL_TSL_Optimization\\Output\\" + SYMBOL + "\\" + InnerFolderName
-    folder_path = "./HSL_TSL_Optimization/Output/" + SYMBOL + "/" + InnerFolderName
+    folder_path = "HSL_TSL_Optimization/Output/" + SYMBOL + "/" + InnerFolderName
     all_files = []
 
     for dirpath, dirnames, filenames in os.walk(folder_path):
