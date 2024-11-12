@@ -129,6 +129,7 @@ if __name__ == "__main__":
 
     # all_files = sorted(all_files)
     all_files = np.array(all_files)
+    all_files.sort()
 
     st.markdown("# Graphs for Version: " + InnerFolderName)
 
