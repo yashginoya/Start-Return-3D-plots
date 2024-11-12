@@ -21,18 +21,18 @@ def make3DGraph(filePath, graphTitle):
 
     surface = go.Surface(
         z=returns2D, 
-        x=call_tsl, 
-        y=put_tsl,
+        y=call_tsl, 
+        x=put_tsl,
         colorscale='Viridis',
         opacity= 0.8,
-        hovertemplate="Call TSL: %{x}<br>Put TSL: %{y}<br>Returns: %{z}<extra></extra>"  # Custom hover text
+        hovertemplate="Put TSL: %{x}<br>Call TSL: %{y}<br>Returns: %{z}<extra></extra>"  # Custom hover text
     )
 
     layout = go.Layout(
         title=graphTitle,
         scene=dict(
-            xaxis_title='Call Option SL',
-            yaxis_title='Put Option SL',
+            xaxis_title='Put Option SL',
+            yaxis_title='Call Option SL',
             zaxis_title='Returns'
         ),
     )
