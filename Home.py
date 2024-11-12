@@ -65,9 +65,9 @@ def main():
     SYMBOL_LIST = []
     version_folder_list = []
 
-    for dirpath,dirnames,filenames in os.walk("HSL_TSL_Optimization/Output"):
-        for dirc in dirnames:
-            SYMBOL_LIST.append(dirc)
+    for dirnames in os.listdir("HSL_TSL_Optimization/Output"):
+        if os.path.isdir("HSL_TSL_Optimization/Output/" + dirnames):
+            SYMBOL_LIST.append(dirnames)
 
     SYMBOL = st.selectbox("Select a Symbol ", SYMBOL_LIST, index=0)
 
