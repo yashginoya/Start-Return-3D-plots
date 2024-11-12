@@ -62,7 +62,7 @@ def make3DGraph(filePath, graphTitle):
 
 if __name__ == "__main__":
     
-    SYMBOL = st.selectbox("Select a Symbol ", ["NIFTY", "BANKNIFTY"], index=0)
+    SYMBOL = st.selectbox("Select a Symbol ", ["NIFTY", "BANKNIFTY" , "FINNIFTY"], index=0)
     version_folder_list = []
 
     for dirpath,dirnames,filenames in os.walk("HSL_TSL_Optimization/Output/" + SYMBOL):
