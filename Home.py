@@ -60,53 +60,6 @@ def make3DGraph(filePath, graphTitle):
 
     return fig
 
-def make3DGraph3(filePath, graphTitle):
-    # Create sample data for the 3D surface plot
-    x = np.linspace(-5, 5, 100)
-    y = np.linspace(-5, 5, 100)
-    x, y = np.meshgrid(x, y)
-    z = np.sin(np.sqrt(x**2 + y**2))  # Surface equation
-
-    # Create the 3D surface plot
-    surface = go.Surface(z=z, x=x, y=y, colorscale='Viridis', opacity=0.8)
-
-    # Define the layout with the initial view
-    layout = go.Layout(
-        title="Interactive 3D Surface with Hover Plane",
-        scene=dict(
-            xaxis=dict(title='X'),
-            yaxis=dict(title='Y'),
-            zaxis=dict(title='Z')
-        )
-    )
-
-    # Create the figure
-    fig = go.Figure(data=[surface], layout=layout)
-
-    # Create the figure update when hover occurs
-    def update_surface(trace, points, selector):
-        if points.point_inds:
-            # Get the hovered point
-            ind = points.point_inds[0]
-            z_val = z.flatten()[ind]
-
-            # Create a horizontal plane at the hovered point's Z value
-            x_plane, y_plane = np.meshgrid(x[:, 0], y[0, :])  # Create grid for the plane
-            z_plane = np.full_like(x_plane, z_val)  # Set all Z-values to the hovered Z-value
-
-            # Create the horizontal plane
-            plane = go.Surface(z=z_plane, x=x_plane, y=y_plane, opacity=0.4, colorscale='Blues')
-
-            # Update the figure with the plane
-            fig.add_trace(plane)
-            fig.show()
-
-    # Connect the hover event with the update function
-    fig.data[0].on_hover(update_surface)
-
-    # Show the plot
-    return fig
-
 if __name__ == "__main__":
     
     SYMBOL = st.selectbox("Select a Symbol ", ["NIFTY", "BANKNIFTY"], index=0)
