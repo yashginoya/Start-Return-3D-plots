@@ -8,8 +8,12 @@ def make3DGraph(filePath, graphTitle):
     # filePath = 'D:\\yash\\Akash Strategy\\Pyramid Neutral Strategy\\Scripts\\HSL_TSL_Optimization\\Output\\NIFTY\\1\\1DT_TSL_Summary.csv'
     df = pd.read_csv(filePath)
 
-    call_tsl = np.arange(50, 201, 10)  # Call Option SL values
-    put_tsl = np.arange(50, 201, 10)    # Put Option SL values
+    call_tsl = np.arange(50, 251, 10)  # Call Option SL values
+    put_tsl = np.arange(50, 251, 10)    # Put Option SL values
+
+    if "Old" in filePath:
+        call_tsl = np.arange(50, 201, 10)  # Call Option SL values
+        put_tsl = np.arange(50, 201, 10)    # Put Option SL values
     n_call = len(call_tsl)
     n_put = len(put_tsl) 
     put_tsl_grid, call_tsl_grid = np.meshgrid(put_tsl, call_tsl)
